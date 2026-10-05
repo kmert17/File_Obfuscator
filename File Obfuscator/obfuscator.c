@@ -9,39 +9,39 @@ int main()
 {
 
 	//obfuscate the file.
-	FILE* in = fopen("secret.txt", "rb+");
-	FILE* out = fopen("hidden.txt", "wb+");
+	FILE* in1 = fopen("first_open.txt", "rb+");
+	FILE* out1 = fopen("second_secret.txt", "wb+");
 	
 
-	if (in == NULL || out == NULL)
+	if (in1 == NULL || out1 == NULL)
 	{
 		printf("Error opening file.\n");
 		return 1;
 	}
 
 	int c;
-	while ((c = fgetc(in)) != EOF)
-		fputc(transform(c), out);
+	while ((c = fgetc(in1)) != EOF)
+		fputc(transform(c), out1);
 
-	fclose(in);
-	fclose(out);
+	fclose(in1);
+	fclose(out1);
 
 
 	//get the real content of the file from an obfuscated file.
-	FILE* hidden = fopen("hidden.txt", "rb+");
-	FILE* decrypted_file = fopen("decrypted.txt", "wb+");
+	FILE* in2 = fopen("second_secret.txt", "rb+");
+	FILE* out2 = fopen("third_open.txt", "wb+");
 
-	if (hidden == NULL || decrypted_file == NULL)
+	if (in2 == NULL || out2 == NULL)
 	{
 		printf("Error opening file.\n");
 		return 1;
 	}
 
-	while ((c = fgetc(hidden)) != EOF)
-		fputc(transform(c), decrypted_file);
+	while ((c = fgetc(in2)) != EOF)
+		fputc(transform(c), out2);
 	
-	fclose(decrypted_file);
-	fclose(hidden);
+	fclose(in2);
+	fclose(out2);
 
 	return 0;
 }
