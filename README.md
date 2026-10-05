@@ -1,4 +1,4 @@
-# Bitwise File Obfuscator (Educational)
+# Bitwise File Obfuscator
 
 A small C program that demonstrates binary file I/O by applying a bitwise NOT (`~`) to every byte of a file. It first obfuscates an input file, then reverses the operation to recover the original content.
 
